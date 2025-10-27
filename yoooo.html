@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Permintaan Maap 🥺</title>
+
+    <style>
+      /* CSS: Pengaturan Tampilan Dasar */
+      body {
+        font-family: "Arial", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #ffe0e0; /* Warna pink yang lebih kalem */
+        text-align: center;
+      }
+
+      .container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        max-width: 90%;
+        width: 550px;
+      }
+
+      h1 {
+        color: #c2185b; /* Merah gelap */
+        font-size: 2.2em;
+      }
+
+      p {
+        color: #333;
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+
+      /* Container untuk Tombol agar Bersebelahan */
+      .tombol-container {
+        display: flex; /* Menggunakan Flexbox */
+        justify-content: space-around; /* Jarak antara tombol */
+        align-items: center;
+        margin-top: 30px;
+      }
+
+      /* Gaya Tombol Umum (Ukuran Awal Sama) */
+      .tombol {
+        padding: 15px 30px;
+        font-size: 1.1em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Transisi halus saat ukuran berubah */
+        font-weight: bold;
+        flex-shrink: 0; /* Mencegah tombol mengecil */
+      }
+
+      /* Gaya Tombol 'Dimaafin' */
+      #tombol-ya {
+        background-color: #4caf50; /* Hijau */
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #tombol-ya:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+
+      /* Gaya Tombol 'Tidak' */
+      #tombol-tidak {
+        background-color: #f44336; /* Merah */
+        color: white;
+      }
+
+      #tombol-tidak:hover {
+        background-color: #e53935;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Maapin akuu yaa cantikk</h1>
+      <p>
+        setelah di pikir" kayanya aku yang salah, harusnya aku ga maksa kamu,
+        maapin yaa?
+      </p>
+
+      <div class="tombol-container">
+        <button id="tombol-ya" class="tombol" onclick="dimaafin()">
+          Iya, Aku maapin
+        </button>
+
+        <button id="tombol-tidak" class="tombol">Tidak!</button>
+      </div>
+    </div>
+
+    <script>
+      /* JAVASCRIPT: Logika Peningkatan Ukuran */
+      const tombolYa = document.getElementById("tombol-ya");
+      const tombolTidak = document.getElementById("tombol-tidak");
+
+      // Variabel untuk menyimpan faktor pembesaran
+      let faktorUkuran = 1.0;
+      const PENAMBAHAN_UKURAN = 0.3; // Setiap kali klik 'Tidak', ukuran bertambah 30%
+
+      // 1. Fungsi ketika tombol 'Iya' diklik (Sukses)
+      function dimaafin() {
+        // Ganti seluruh konten menjadi pesan terima kasih
+        document.querySelector(".container").innerHTML = `
+                <h1 style="color: #4CAF50; font-size: 2.5em;">Yeayyy thank u cantikk, love u moree ❤️</h1>
+                <p>egois banget yaa aku?, ga liat dulu dari sisi kamunya</p>
+                <p style="font-size: 0.8em; color: #777; margin-top: 30px;">(Sekarang kamu bisa menutup halaman ini)</p>
+            `;
+      }
+
+      // 2. Logika ketika tombol 'Tidak' diklik
+      tombolTidak.addEventListener("click", function () {
+        // A. Tambah ukuran tombol 'Iya' (Dimaafin)
+        faktorUkuran += PENAMBAHAN_UKURAN;
+        tombolYa.style.transform = `scale(${faktorUkuran})`;
+
+        // B. (Opsional) Beri sedikit pesan untuk motivasi
+        let pesan;
+        if (faktorUkuran < 1.6) {
+          pesan =
+            "Ayo dongg cantikk, maapin aku, coba dipikirkan lagi. klik yang kiri tuhh :v ";
+        } else if (faktorUkuran < 2.2) {
+          pesan =
+            "Liat, tombol ijo udah makin gede, bisi meledak, kamu harus maapin akuu😉";
+        } else {
+          pesan = "Yaudah kalo ga dimaapin huhuhu";
+          tombolTidak.style.opacity = "0.5"; // Tombol 'Tidak' mulai pudar
+          tombolTidak.style.cursor = "not-allowed"; // Kursor berubah
+        }
+
+        alert(pesan);
+      });
+    </script>
+  </body>
+</html>
